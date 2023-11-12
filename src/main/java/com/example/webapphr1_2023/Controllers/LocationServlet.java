@@ -24,11 +24,12 @@ public class LocationServlet extends HttpServlet {
         switch (action){
             case "lista":
                 ArrayList<Location> listaLocation = locationDao.obtenerListaLocations();
+                req.setAttribute("locationList", listaLocation);
+                view = req.getRequestDispatcher("location/list.jsp");
+                view.forward(req, resp);
                 break;
         }
-        req.setAttribute("locationList", new ArrayList<>());
-        view = req.getRequestDispatcher("location/list.jsp");
-        view.forward(req, resp);
+
     }
 
     @Override
