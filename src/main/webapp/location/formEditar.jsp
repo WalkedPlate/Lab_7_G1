@@ -5,7 +5,7 @@
 
 <jsp:useBean id="listLocation" type="ArrayList<com.example.webapphr1_2023.Beans.Location>" scope="request" />
 <jsp:useBean id="listCountries" type="ArrayList<Countries>" scope="request" />
-<jsp:useBean id="location" type="com.example.webapphr1_2023.Beans.Location" scope="request"/>
+<jsp:useBean id="location" type="Location" scope="request"/>
 <!DOCTYPE html>
 <html>
 <head>

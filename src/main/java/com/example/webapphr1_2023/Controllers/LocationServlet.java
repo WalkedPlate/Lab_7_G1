@@ -129,6 +129,11 @@ public class LocationServlet extends HttpServlet {
                 break;
 
             case "actualizar":
+                System.out.println(req.getParameter("street_address"));
+                System.out.println(req.getParameter("postal_code"));
+                System.out.println(req.getParameter("city"));
+                System.out.println(req.getParameter("country_id"));
+                System.out.println(req.getParameter("location_id"));
                 location.setLocationId(Integer.parseInt(req.getParameter("location_id"))); //no olvidar que para actualizar se debe enviar el ID
 
                 locationDao.actualizarLocation(location);

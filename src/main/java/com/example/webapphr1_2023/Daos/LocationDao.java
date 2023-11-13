@@ -14,8 +14,7 @@ public class LocationDao extends DaoBase{
 
         try (Connection conn = getConnection();
              Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("select * from locations l\n" +
-                     "\t\tleft join countries c on l.country_id = c.country_id ORDER BY location_id");) {
+             ResultSet rs = stmt.executeQuery("select * from locations l left join countries c on l.country_id = c.country_id ORDER BY location_id;");) {
 
             while (rs.next()) {
                 Location location = new Location();
@@ -26,6 +25,7 @@ public class LocationDao extends DaoBase{
                 location.setState_province(rs.getString(5));
 
                 Countries countries = new Countries();
+                countries.setCountry_id(rs.getString("c.country_id"));
                 countries.setCountry_name(rs.getString(8));
                 location.setCountries(countries);
 
@@ -43,7 +43,7 @@ public class LocationDao extends DaoBase{
 
     public Location obtenerLocation(int locationId) {
 
-        Location location = null;
+        Location location = new Location();
 
         String sql = "select * from locations l\n" +
                 "\t\tleft join countries c on l.country_id = c.country_id Where l.location_id = ?";
@@ -64,7 +64,7 @@ public class LocationDao extends DaoBase{
                     location.setState_province(rs.getString(5));
 
                     Countries countries = new Countries();
-                    //countries.setCountry_id(rs.getString(7));
+                    countries.setCountry_id(rs.getString("c.country_id"));
                     countries.setCountry_name(rs.getString(8));
 
                     location.setCountries(countries);
