@@ -59,7 +59,7 @@ public class EmployeeServlet extends HttpServlet {
                         request.setAttribute("listaTrabajos",jobDao.obtenerListaTrabajos());
                         request.setAttribute("listaJefes",employeeDao.listarEmpleados());
                         request.setAttribute("listaDepartamentos",departmentDao.lista());
-                        view = request.getRequestDispatcher("employees/formularioEditar.jsp");
+                        view = request.getRequestDispatcher("employees/formEditar.jsp");
                         view.forward(request, response);
                     } else {
                         response.sendRedirect("EmployeeServlet");
